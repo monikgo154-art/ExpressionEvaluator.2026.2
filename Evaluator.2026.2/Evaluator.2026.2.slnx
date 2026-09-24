@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Baken/Backend.vbproj" />
+  <Project Path="Fronten.consol/Fronten.consol.csproj" />
+  <Project Path="Fronten.windows/Fronten.windows.csproj" />
+</Solution>
