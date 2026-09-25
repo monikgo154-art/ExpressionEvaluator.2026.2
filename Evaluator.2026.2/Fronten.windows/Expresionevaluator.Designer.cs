@@ -1,6 +1,6 @@
 ﻿namespace Fronten.windows
 {
-    partial class Form1
+    partial class Expresionevaluator
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            SuspendLayout();
+            // 
+            // Expresionevaluator
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Name = "Expresionevaluator";
             Text = "Form1";
+            Load += Expresionevaluator_Load;
+            ResumeLayout(false);
         }
 
         #endregion
