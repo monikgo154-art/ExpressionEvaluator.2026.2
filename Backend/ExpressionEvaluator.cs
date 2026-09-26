@@ -5,7 +5,7 @@ namespace Backend;
 
 public static class ExpressionEvaluator
 {
-    public static double Evalute(string infix) => EvalutePostfix(ToPostfix(infix));
+    public static double Evaluate(string infix) => EvaluatePostfix(ToPostfix(infix));
 
     private static string ToPostfix(string infix)
     {
