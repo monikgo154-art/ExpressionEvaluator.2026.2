@@ -1,16 +1,14 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Reflection.Metadata;
-
+﻿
 namespace Backend;
 
 public static class ExpressionEvaluator
 {
-    public static double Evaluate(string infix) => EvaluatePostfix(ToPostfix(infix));
+    public static double Evalute(string infix) => EvalutePostfix(ToPostfix(infix));
 
     private static string ToPostfix(string infix)
     {
         var posfix = string.Empty;
-        var stack = new Stack<char>();
+        var stack = new Stack<string>();
         foreach (var item in infix)
         {
             if (IsOperator(item))
@@ -18,7 +16,7 @@ public static class ExpressionEvaluator
                 if (item == ')')
                 {
                     var ope = stack.Pop();
-                    while(ope != '(')
+                    while (ope != "(")
                     {
                         posfix += ope;
                         ope = stack.Pop();
@@ -28,18 +26,18 @@ public static class ExpressionEvaluator
                 {
                     if (stack.Count == 0)
                     {
-                        stack.Push(item);
+                        stack.Push(item.ToString());
                     }
                     else
                     {
                         if (PriorityInfix(item) > PriorityStack(stack.Peek()))
                         {
-                            stack.Push(item);
+                            stack.Push(item.ToString());
                         }
                         else
                         {
                             posfix += stack.Pop();
-                            stack.Push(item);
+                            stack.Push(item.ToString());
                         }
                     }
                 }
@@ -56,25 +54,25 @@ public static class ExpressionEvaluator
         return posfix;
     }
 
-    private static int PriorityStack(char op) => op switch
+    private static int PriorityStack(string op) => op switch
     {
-        '^' => 3,
-        '*' => 2,
-        '/' => 2,
-        '+' => 1,
-        '-' => 1,
-        '(' => 0,
+        "^" => 3,
+        "*" => 2,
+        "/" => 2,
+        "+" => 1,
+        "-" => 1,
+        "(" => 0,
         _ => throw new Exception("Invalid expression."),
     };
 
-    private static int PriorityInfix(char op) => op switch
+    private static int PriorityInfix(string op) => op switch
     {
-        '^' => 4,
-        '*' => 2,
-        '/' => 2,
-        '+' => 1,
-        '-' => 1,
-        '(' => 5,
+        "^" => 4,
+        "*" => 2,
+        "/" => 2,
+        "+" => 1,
+        "-" => 1,
+        "(" => 5,
         _ => throw new Exception("Invalid expression."),
     };
 

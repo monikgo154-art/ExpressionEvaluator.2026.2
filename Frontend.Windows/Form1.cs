@@ -1,12 +1,4 @@
 using Backend;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Frontend.Windows;
 
@@ -17,114 +9,116 @@ public partial class Form1 : Form
         InitializeComponent();
     }
 
-    private void textBox1_TextChanged(object sender, EventArgs e)
+    private void btn6_Click(object sender, EventArgs e)
     {
+        txtDisplay.Text += "6";
 
     }
 
-    private void button12_Click(object sender, EventArgs e)
-
+    private void btn7_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "/";
+        txtDisplay.Text += "7";
     }
 
-    private void button18_Click(object sender, EventArgs e)
+    private void btn9_Click(object sender, EventArgs e)
     {
-        textBox1.Text += $"={Backend.ExpressionEvaluator.Evaluate(textBox1.Text)}";
+        txtDisplay.Text += "9";
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void btnResult_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "7";
+        txtDisplay.Text += $"={ExpressionEvaluator.Evalute(txtDisplay.Text)}";
+
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void btn8_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "8";
+        txtDisplay.Text += "8";
     }
 
-    private void button3_Click(object sender, EventArgs e)
+    private void btn4_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "9";
+        txtDisplay.Text += "4";
+
+
     }
 
-    private void button6_Click(object sender, EventArgs e)
+    private void btn5_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "4";
+        txtDisplay.Text += "5";
     }
 
-    private void button5_Click(object sender, EventArgs e)
+    private void btn1_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "5";
+        txtDisplay.Text += "1";
+
+
     }
 
-    private void button9_Click(object sender, EventArgs e)
+    private void btn2_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "1";
+        txtDisplay.Text += "2";
     }
 
-    private void button8_Click(object sender, EventArgs e)
+    private void btn3_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "2";
+        txtDisplay.Text += "3";
     }
 
-    private void button7_Click(object sender, EventArgs e)
+    private void btn0_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "3";
+        txtDisplay.Text += "0";
     }
 
-    private void button10_Click(object sender, EventArgs e)
+    private void btnDot_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "0";
+        txtDisplay.Text += ".";
     }
 
-    private void button11_Click(object sender, EventArgs e)
+    private void btnDivide_Click(object sender, EventArgs e)
     {
-        textBox1.Text += ".";
+        txtDisplay.Text += "/";
     }
 
-    private void button13_Click(object sender, EventArgs e)
+    private void btnMultiply_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "*";
+        txtDisplay.Text += "*";
     }
 
-    private void button15_Click(object sender, EventArgs e)
+    private void btnPlus_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "+";
+        txtDisplay.Text += "+";
     }
 
-    private void button14_Click(object sender, EventArgs e)
+    private void btnMinus_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "-";
+        txtDisplay.Text += "-";
     }
 
-    private void button17_Click(object sender, EventArgs e)
+    private void btnOpenParenthesis_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "(";
+        txtDisplay.Text += "(";
     }
 
-    private void button16_Click(object sender, EventArgs e)
+    private void btnCloseParenthesis_Click(object sender, EventArgs e)
     {
-        textBox1.Text += ")";
+        txtDisplay.Text += ")";
     }
 
-    private void button19_Click(object sender, EventArgs e)
+    private void btnPow_Click(object sender, EventArgs e)
     {
-        textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+        txtDisplay.Text += "^";
     }
 
-    private void button20_Click(object sender, EventArgs e)
+    private void btnDelete_Click(object sender, EventArgs e)
     {
-        textBox1.Text = string.Empty;
+        txtDisplay.Text = txtDisplay.Text.Substring(0, txtDisplay.Text.Length - 1);
     }
 
-    private void button21_Click(object sender, EventArgs e)
+    private void btnClear_Click(object sender, EventArgs e)
     {
-        textBox1.Text += "^";
-    }
-
-    private void button4_Click(object sender, EventArgs e)
-    {
-        textBox1.Text += "6";
+        txtDisplay.Text = string.Empty;
     }
 }
+
+    
