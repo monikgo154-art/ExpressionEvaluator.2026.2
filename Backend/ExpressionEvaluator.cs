@@ -9,16 +9,27 @@ public static class ExpressionEvaluator
     {
         var posfix = string.Empty;
         var stack = new Stack<string>();
+        string num = "";
         foreach (var item in infix)
         {
-            if (IsOperator(item))
+
+            if (!IsOperator(item))
             {
+                num += item;
+            }
+            else
+            {
+                if (num != "")
+                {
+                    posfix += num + " ";
+                    num = "";
+                }
                 if (item == ')')
                 {
                     var ope = stack.Pop();
                     while (ope != "(")
                     {
-                        posfix += ope;
+                        posfix += ope + " ";
                         ope = stack.Pop();
                     }
                 }
@@ -30,27 +41,32 @@ public static class ExpressionEvaluator
                     }
                     else
                     {
-                        if (PriorityInfix(item) > PriorityStack(stack.Peek()))
+                        if (PriorityInfix(item.ToString()) > PriorityStack(stack.Peek()))
                         {
                             stack.Push(item.ToString());
                         }
                         else
                         {
-                            posfix += stack.Pop();
+                            posfix += stack.Pop() + " ";
                             stack.Push(item.ToString());
                         }
                     }
                 }
-            }
-            else
-            {
-                posfix += item;
+
+
             }
         }
-        do
+        if (num != "")
         {
-            posfix += stack.Pop();
-        } while (stack.Count != 0);
+            posfix += num + " ";
+        }
+
+
+        while (stack.Count != 0)
+
+        {
+            posfix += stack.Pop() + " ";
+        }
         return posfix;
     }
 
@@ -81,17 +97,18 @@ public static class ExpressionEvaluator
     private static double EvalutePostfix(string postfix)
     {
         var stack = new Stack<double>();
-        foreach (var item in postfix)
+
+        foreach (var item in postfix.Split(' ', StringSplitOptions.RemoveEmptyEntries))
         {
-            if (IsOperator(item))
+            if (IsOperator(item[0]))
             {
                 var ope2 = stack.Pop();
                 var ope1 = stack.Pop();
-                stack.Push(Calculate(ope1, ope2, item));
+                stack.Push(Calculate(ope1, ope2, item[0]));
             }
             else
             {
-                stack.Push(char.GetNumericValue(item));
+                stack.Push(double.Parse(item));
             }
         }
         return stack.Pop();
