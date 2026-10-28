@@ -143,7 +143,7 @@
                 return frequencies;
             }
 
-            // Show whether an element exists or does not exist
+            // Show whether an element exists or does not exist|
             public bool Exists(T data)
             {
                 var current = _head;
